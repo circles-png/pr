@@ -85,11 +85,11 @@ fn main() -> anyhow::Result<()> {
                 info!("Event received");
                 let mut bottom = bottom.clone();
                 info!("Compositing");
-                let image = ImageReader::open(path)?.decode()?.resize_to_fill(
-                    args.width,
-                    args.height,
-                    FilterType::Gaussian,
-                );
+                let image = ImageReader::open(path)?
+                    .with_guessed_format()?
+                    .decode()?
+                    .resize_to_fill(args.width, args.height, FilterType::Gaussian)
+                    .grayscale();
                 replace(&mut bottom, &image, x, y);
                 let mut bytes = Vec::new();
                 bottom.write_to(Cursor::new(&mut bytes), ImageFormat::Png)?;
