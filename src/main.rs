@@ -100,7 +100,11 @@ fn main() -> anyhow::Result<()> {
                         &bytes,
                         PrinterJobOptions {
                             name: None,
-                            raw_properties: &[("copies", &copies)],
+                            raw_properties: &[
+                                ("copies", &copies),
+                                ("print-color-mode", "monochrome"),
+                                ("ColorModel", "Gray"),
+                            ],
                             converter: Converter::None,
                         },
                     )
