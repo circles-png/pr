@@ -103,7 +103,8 @@ fn main() -> anyhow::Result<()> {
                             raw_properties: &[
                                 ("copies", &copies),
                                 ("print-color-mode", "monochrome"),
-                                ("ColorModel", "Gray"),
+                                ("ColorModel", "Mono"),
+                                ("EPIJ_Ink", "0"),
                             ],
                             converter: Converter::None,
                         },
