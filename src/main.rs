@@ -85,7 +85,7 @@ fn main() -> anyhow::Result<()> {
                 info!("Event received");
                 let mut bottom = bottom.clone();
                 info!("Compositing");
-                let image = ImageReader::open(path)?.decode()?.resize(
+                let image = ImageReader::open(path)?.decode()?.resize_to_fill(
                     args.width,
                     args.height,
                     FilterType::Gaussian,
